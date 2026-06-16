@@ -36,7 +36,7 @@ const cards = [
 <section style="background: var(--lino); padding: 7rem 2rem;">
   <div style="max-width: 860px; margin: 0 auto;">
 
-    <span class="section-label reveal" data-i18n="projects.label" style="color: var(--musgo); margin-bottom: 1rem;">Trabajo</span>
+    <span class="section-label reveal" data-i18n="projects.label" style="color: var(--color-moss); margin-bottom: 1rem;">Trabajo</span>
 
     <h2 class="reveal" data-i18n="projects.intro" style="
       font-family: 'DM Serif Display', serif;
@@ -48,12 +48,7 @@ const cards = [
 
     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
       {cards.map((c, i) => (
-        <article class={`reveal reveal-delay-${i + 1}`} style={`
-          border: 1px solid #E0D8CE;
-          padding: ${c.featured ? '2.5rem' : '2rem'};
-          background: var(--lino);
-          transition: box-shadow 0.25s;
-        `}>
+        <article class={`project-card reveal reveal-delay-${i + 1}`} style={`padding: ${c.featured ? '2.5rem' : '2rem'};`}>
           <h3
             data-i18n={c.titleKey}
             style={`
@@ -80,7 +75,7 @@ const cards = [
             style="
               font-family: 'DM Sans', sans-serif;
               font-size: 0.73rem;
-              color: var(--musgo);
+              color: var(--color-moss);
               letter-spacing: 0.02em;
               margin-bottom: 1.25rem;
             "
@@ -91,7 +86,7 @@ const cards = [
             style="
               font-family: 'DM Sans', sans-serif;
               font-size: 0.875rem;
-              color: var(--violeta);
+              color: var(--color-moss);
               text-decoration: none;
             "
           ><span data-i18n="projects.cta">Ver caso de estudio →</span></a>
@@ -103,5 +98,16 @@ const cards = [
 </section>
 
 <style>
+  .project-card {
+    border: 1px solid #E0D8CE;
+    background: var(--lino);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .project-card:hover {
+    border-color: var(--color-moss);
+    transform: translateY(-4px);
+  }
+
   .project-cta:hover { text-decoration: underline; }
 </style>

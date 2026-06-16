@@ -1,79 +1,114 @@
 ---
 const skills = [
-  { n: 1, intention: 'Entender lo que las personas realmente necesitan', tools: 'Entrevistas · Etnografía · Talleres · Síntesis · Miro' },
-  { n: 2, intention: 'Encontrar patrones en datos complejos',            tools: 'Python · pandas · scikit-learn · K-Means · EDA · SQL' },
-  { n: 3, intention: 'Construir lo que investigo',                       tools: 'React · Next.js · TypeScript · Supabase · REST APIs' },
-  { n: 4, intention: 'Hacer preguntas que cambian la dirección',         tools: 'Investigación cualitativa · Desk research · Mapeo de experiencia · Análisis de stakeholders' },
-  { n: 5, intention: 'Integrar IA con criterio humano',                  tools: 'LLMs (Claude · ChatGPT · Gemini) · LangChain · n8n · Agentes' },
-  { n: 6, intention: 'Traducir hallazgos en decisiones',                 tools: 'Facilitación · Comunicación técnica/no técnica · Gestión de proyectos · Stakeholder management' },
+    {
+        n: 1,
+        intention: "Entender lo que las personas realmente necesitan",
+        tools: "Entrevistas · Etnografía · Talleres · Síntesis · Miro",
+    },
+    {
+        n: 2,
+        intention: "Encontrar patrones en datos complejos",
+        tools: "Python · pandas · scikit-learn · K-Means · EDA · SQL",
+    },
+    {
+        n: 3,
+        intention: "Construir lo que investigo",
+        tools: "React · Next.js · TypeScript · Supabase · REST APIs",
+    },
+    {
+        n: 4,
+        intention: "Hacer preguntas que cambian la dirección",
+        tools: "Investigación cualitativa · Desk research · Mapeo de experiencia · Análisis de stakeholders",
+    },
+    {
+        n: 5,
+        intention: "Integrar IA con criterio humano",
+        tools: "LLMs (Claude · ChatGPT · Gemini) · LangChain · n8n · Agentes",
+    },
+    {
+        n: 6,
+        intention: "Traducir hallazgos en decisiones",
+        tools: "Facilitación · Comunicación técnica/no técnica · Gestión de proyectos · Stakeholder management",
+    },
 ];
 ---
 
 <section style="background: var(--dark); padding: 7rem 2rem;">
-  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="max-width: 860px; margin: 0 auto;">
+        <span
+            class="section-label reveal"
+            data-i18n="skills.label"
+            style="color: var(--ambar); margin-bottom: 3rem;">Habilidades</span
+        >
 
-    <span class="section-label reveal" data-i18n="skills.label" style="color: var(--ambar); margin-bottom: 3rem;">Capacidades</span>
-
-    <div class="skills-grid">
-      {skills.map((s, i) => (
-        <div class={`skill-card reveal reveal-delay-${i + 1}`}>
-          <h3
-            class="skill-title"
-            data-i18n={`skills.${s.n}.intention`}
-          >{s.intention}</h3>
-          <p
-            class="skill-tools"
-            data-i18n={`skills.${s.n}.tools`}
-          >{s.tools}</p>
+        <div class="skills-grid">
+            {
+                skills.map((s, i) => (
+                    <div class={`skill-card reveal reveal-delay-${i + 1}`}>
+                        <h3
+                            class="skill-title"
+                            data-i18n={`skills.${s.n}.intention`}
+                        >
+                            {s.intention}
+                        </h3>
+                        <p
+                            class="skill-tools"
+                            data-i18n={`skills.${s.n}.tools`}
+                        >
+                            {s.tools}
+                        </p>
+                    </div>
+                ))
+            }
         </div>
-      ))}
     </div>
-
-  </div>
 </section>
 
 <style>
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .skill-card {
-    background: #2A1E18;
-    border: 1px solid rgba(74, 124, 89, 0.3);
-    padding: 1.75rem;
-    transition: border-color 0.25s;
-  }
-
-  .skill-card:hover {
-    border-color: var(--musgo);
-  }
-
-  .skill-card:hover .skill-title {
-    color: var(--ambar);
-  }
-
-  .skill-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-    transition: color 0.25s;
-  }
-
-  .skill-tools {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.73rem;
-    color: var(--text-light);
-    opacity: 0.45;
-    line-height: 1.65;
-  }
-
-  @media (max-width: 600px) {
     .skills-grid {
-      grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
     }
-  }
+
+    .skill-card {
+        background: #2a1e18;
+        border: 1px solid rgba(74, 124, 89, 0.3);
+        padding: 1.75rem;
+        transition:
+            border-color 0.25s,
+            transform 0.25s;
+    }
+
+    .skill-card:hover {
+        border-color: var(--color-violet);
+        transform: translateY(-4px);
+    }
+
+    .skill-card:hover .skill-title {
+        color: var(--color-amber);
+    }
+
+    .skill-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.05rem;
+        color: var(--text-light);
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+        transition: color 0.25s;
+    }
+
+    .skill-tools {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.73rem;
+        color: var(--text-light);
+        opacity: 0.45;
+        line-height: 1.65;
+    }
+
+    @media (max-width: 600px) {
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>

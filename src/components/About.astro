@@ -7,12 +7,12 @@
     <h2 class="reveal" data-i18n="about.name" style="
       font-family: 'DM Serif Display', serif;
       font-size: 38px;
-      color: var(--ambar);
+      color: var(--color-amber);
       margin-bottom: 2.5rem;
     ">Linamaría Martínez</h2>
 
     <blockquote class="reveal" style="
-      border-left: 3px solid var(--violeta);
+      border-left: 3px solid var(--color-violet);
       padding-left: 1.5rem;
       margin-bottom: 3rem;
     ">
@@ -62,22 +62,55 @@
     <!-- Stats -->
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem;">
       <div class="reveal reveal-delay-1">
-        <div data-i18n="about.stat1.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--ambar); line-height: 1;">10+</div>
+        <div class="count-up" data-i18n="about.stat1.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--color-amber); line-height: 1;">10+</div>
         <div data-i18n="about.stat1.label" style="font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-light); opacity: 0.6; margin-top: 0.3rem;">años · investigación de campo</div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div data-i18n="about.stat2.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--ambar); line-height: 1;">60+</div>
+        <div class="count-up" data-i18n="about.stat2.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--color-amber); line-height: 1;">60+</div>
         <div data-i18n="about.stat2.label" style="font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-light); opacity: 0.6; margin-top: 0.3rem;">talleres · facilitados</div>
       </div>
       <div class="reveal reveal-delay-3">
-        <div data-i18n="about.stat3.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--ambar); line-height: 1;">53K+</div>
+        <div class="count-up" data-i18n="about.stat3.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--color-amber); line-height: 1;">53K+</div>
         <div data-i18n="about.stat3.label" style="font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-light); opacity: 0.6; margin-top: 0.3rem;">registros · analizados con ML</div>
       </div>
       <div class="reveal reveal-delay-4">
-        <div data-i18n="about.stat4.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--ambar); line-height: 1;">4</div>
+        <div class="count-up" data-i18n="about.stat4.num" style="font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--color-amber); line-height: 1;">4</div>
         <div data-i18n="about.stat4.label" style="font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-light); opacity: 0.6; margin-top: 0.3rem;">productos · construidos y lanzados</div>
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  const countEls = document.querySelectorAll('.count-up');
+
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      countObserver.unobserve(entry.target);
+
+      const el = entry.target as HTMLElement;
+      const raw = el.textContent?.trim() ?? '';
+      // Handle "53K+" → end=53, suffix="K+"
+      const match = raw.match(/^(\d+)(.*)/);
+      if (!match) return;
+
+      const end = parseInt(match[1]);
+      const suffix = match[2];
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function update(now: number) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(end * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    });
+  }, { threshold: 0.6 });
+
+  countEls.forEach(el => countObserver.observe(el));
+</script>

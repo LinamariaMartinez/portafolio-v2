@@ -7,6 +7,10 @@
   --color-violeta: #6B3FA0;
   --color-terracota: #C4622D;
   --color-ambar: #D4A853;
+  --color-moss: #5C9E70;
+  --color-violet: #6B3FA0;
+  --color-terracotta: #C4622D;
+  --color-amber: #D4A853;
   --font-display: "DM Serif Display", serif;
   --font-body: "DM Sans", sans-serif;
 }
@@ -20,6 +24,12 @@
   --ambar: #D4A853;
   --text-dark: #1E1410;
   --text-light: #F5F2EB;
+  --color-lino: #F5F2EB;
+  --color-dark: #1E1410;
+  --color-moss: #5C9E70;
+  --color-violet: #6B3FA0;
+  --color-terracotta: #C4622D;
+  --color-amber: #D4A853;
 }
 
 *, *::before, *::after {

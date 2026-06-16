@@ -13,48 +13,39 @@
     justify-content: center;
   ">
 
-    <!-- Curtain left half -->
+    <!-- Curtain left half (color panel only) -->
     <div class="curtain-left" style="
       position: absolute;
       inset: 0;
       width: 50%;
       background: var(--lino);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 0.25rem;
       z-index: 10;
-    ">
-      <span data-i18n="hero.curtain.left" style="
-        font-family: 'DM Serif Display', serif;
-        font-size: clamp(1.25rem, 3.5vw, 2.25rem);
-        color: var(--text-dark);
-        white-space: nowrap;
-        display: block;
-        text-align: center;
-      ">Las personas te dicen</span>
-    </div>
+    "></div>
 
-    <!-- Curtain right half -->
+    <!-- Curtain right half (color panel only) -->
     <div class="curtain-right" style="
       position: absolute;
       top: 0; right: 0; bottom: 0;
       width: 50%;
       background: var(--lino);
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 0.25rem;
       z-index: 10;
+    "></div>
+
+    <!-- First phrase — single centered element above curtains -->
+    <div class="hero-phrase-1" style="
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      padding: 0 2rem;
+      z-index: 11;
     ">
-      <span data-i18n="hero.curtain.right" style="
+      <p style="
         font-family: 'DM Serif Display', serif;
         font-size: clamp(1.25rem, 3.5vw, 2.25rem);
         color: var(--text-dark);
-        white-space: nowrap;
-        display: block;
+        line-height: 1.3;
         text-align: center;
-      ">lo que piensan.</span>
+      "><span data-i18n="hero.curtain.left">Las personas te dicen</span> <span data-i18n="hero.curtain.right">lo que piensan</span></p>
     </div>
 
     <!-- Revealed phrase behind curtain -->
@@ -72,7 +63,7 @@
         color: var(--violeta);
         line-height: 1.2;
         text-align: center;
-      ">Yo descubro por qué lo piensan.</p>
+      ">Yo descubro por qué lo piensan</p>
     </div>
 
     <!-- Identity block — revealed last -->
@@ -122,22 +113,9 @@
   });
 
   tl
-    .to('.curtain-left',  { x: '-100%', ease: 'none', duration: 1 }, 0)
-    .to('.curtain-right', { x:  '100%', ease: 'none', duration: 1 }, 0)
-    .to('.hero-revealed', { opacity: 1, ease: 'none', duration: 0.5 }, 0.35)
-    .to('.hero-identity', { opacity: 1, y: 0, ease: 'none', duration: 0.4 }, 0.65);
+    .to('.curtain-left',   { x: '-100%', ease: 'none', duration: 1 }, 0)
+    .to('.curtain-right',  { x:  '100%', ease: 'none', duration: 1 }, 0)
+    .to('.hero-phrase-1',  { opacity: 0, ease: 'none', duration: 0.25 }, 0.15)
+    .to('.hero-revealed',  { opacity: 1, ease: 'none', duration: 0.5 }, 0.35)
+    .to('.hero-identity',  { opacity: 1, y: 0, ease: 'none', duration: 0.4 }, 0.65);
 </script>
-
-<style>
-  @media (max-width: 480px) {
-    .curtain-left, .curtain-right {
-      width: 50% !important;
-    }
-    .curtain-left span, .curtain-right span {
-      font-size: 1rem !important;
-      white-space: normal !important;
-      text-align: center;
-      padding: 0 0.5rem;
-    }
-  }
-</style>
