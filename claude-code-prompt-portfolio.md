@@ -43,13 +43,13 @@ SECTION 1 — HERO (bg: lino)
 Scroll-pinned curtain animation (height: 200vh, sticky):
 
 Phase 1 — full screen, centered:
-"Las personas te dicen lo que piensan."
+"Las personas te dicen lo que piensan"
 Split into left/right halves, ready to open.
 
 Phase 2 — on scroll, halves slide horizontally outward:
 left half → translateX(-100%), right half → translateX(+100%)
 Behind them, revealed:
-"Yo descubro por qué lo piensan."
+"Yo descubro por qué lo piensan"
 Color: --violeta
 
 Phase 3 — after curtain fully open, fade in:

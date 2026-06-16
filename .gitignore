@@ -33,6 +33,7 @@ Thumbs.db
 *.sln
 
 # Logs
-npm-debug.log*
+.pnpm-store/
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*

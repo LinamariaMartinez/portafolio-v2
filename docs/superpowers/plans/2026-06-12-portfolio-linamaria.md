@@ -210,10 +210,10 @@ body {
 
 ```json
 {
-  "hero.curtain": "Las personas te dicen lo que piensan.",
+  "hero.curtain": "Las personas te dicen lo que piensan",
   "hero.curtain.left": "Las personas te dicen",
-  "hero.curtain.right": "lo que piensan.",
-  "hero.revealed": "Yo descubro por qué lo piensan.",
+  "hero.curtain.right": "lo que piensan",
+  "hero.revealed": "Yo descubro por qué lo piensan",
   "hero.name": "Linamaría Martínez",
   "hero.role": "Investigadora UX · IA con criterio humano",
 
@@ -590,7 +590,7 @@ Expected: No errors. Layout compiles cleanly.
           color: var(--text-dark);
           white-space: nowrap;
         "
-      >lo que piensan.</span>
+      >lo que piensan</span>
     </div>
 
     <!-- Revealed phrase (behind curtain) -->
@@ -612,7 +612,7 @@ Expected: No errors. Layout compiles cleanly.
           color: var(--violeta);
           line-height: 1.2;
         "
-      >Yo descubro por qué lo piensan.</p>
+      >Yo descubro por qué lo piensan</p>
     </div>
 
     <!-- Identity block -->
