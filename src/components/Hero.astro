@@ -1,0 +1,143 @@
+---
+---
+
+<section class="hero-wrapper" style="height: 200vh; position: relative; background: var(--lino);">
+
+  <div class="hero-sticky" style="
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ">
+
+    <!-- Curtain left half -->
+    <div class="curtain-left" style="
+      position: absolute;
+      inset: 0;
+      width: 50%;
+      background: var(--lino);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0.25rem;
+      z-index: 10;
+    ">
+      <span data-i18n="hero.curtain.left" style="
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+        color: var(--text-dark);
+        white-space: nowrap;
+        display: block;
+        text-align: center;
+      ">Las personas te dicen</span>
+    </div>
+
+    <!-- Curtain right half -->
+    <div class="curtain-right" style="
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 50%;
+      background: var(--lino);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 0.25rem;
+      z-index: 10;
+    ">
+      <span data-i18n="hero.curtain.right" style="
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+        color: var(--text-dark);
+        white-space: nowrap;
+        display: block;
+        text-align: center;
+      ">lo que piensan.</span>
+    </div>
+
+    <!-- Revealed phrase behind curtain -->
+    <div class="hero-revealed" style="
+      position: absolute;
+      opacity: 0;
+      text-align: center;
+      padding: 0 2rem;
+      z-index: 5;
+      width: 100%;
+    ">
+      <p data-i18n="hero.revealed" style="
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.5rem, 4.5vw, 3rem);
+        color: var(--violeta);
+        line-height: 1.2;
+        text-align: center;
+      ">Yo descubro por qué lo piensan.</p>
+    </div>
+
+    <!-- Identity block — revealed last -->
+    <div class="hero-identity" style="
+      position: absolute;
+      bottom: 10vh;
+      left: 0; right: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      text-align: center;
+      z-index: 5;
+      padding: 0 2rem;
+    ">
+      <div style="width: 52px; height: 1px; background: var(--terracota); margin: 0 auto 1.75rem;"></div>
+      <h1 data-i18n="hero.name" style="
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(2rem, 5vw, 52px);
+        color: var(--text-dark);
+        line-height: 1.05;
+      ">Linamaría Martínez</h1>
+      <p data-i18n="hero.role" style="
+        font-family: 'DM Sans', sans-serif;
+        font-size: 14px;
+        color: var(--musgo);
+        margin-top: 0.8rem;
+        letter-spacing: 0.04em;
+      ">Investigadora UX · IA con criterio humano</p>
+      <div class="scroll-arrow" style="margin-top: 2.5rem; color: var(--terracota); font-size: 1.2rem;">↓</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.hero-wrapper',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1,
+    }
+  });
+
+  tl
+    .to('.curtain-left',  { x: '-100%', ease: 'none', duration: 1 }, 0)
+    .to('.curtain-right', { x:  '100%', ease: 'none', duration: 1 }, 0)
+    .to('.hero-revealed', { opacity: 1, ease: 'none', duration: 0.5 }, 0.35)
+    .to('.hero-identity', { opacity: 1, y: 0, ease: 'none', duration: 0.4 }, 0.65);
+</script>
+
+<style>
+  @media (max-width: 480px) {
+    .curtain-left, .curtain-right {
+      width: 50% !important;
+    }
+    .curtain-left span, .curtain-right span {
+      font-size: 1rem !important;
+      white-space: normal !important;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+  }
+</style>

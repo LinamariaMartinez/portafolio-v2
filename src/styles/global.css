@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lino: #F5F2EB;
+  --color-dark: #1E1410;
+  --color-musgo: #4A7C59;
+  --color-violeta: #6B3FA0;
+  --color-terracota: #C4622D;
+  --color-ambar: #D4A853;
+  --font-display: "DM Serif Display", serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+:root {
+  --lino: #F5F2EB;
+  --dark: #1E1410;
+  --musgo: #4A7C59;
+  --violeta: #6B3FA0;
+  --terracota: #C4622D;
+  --ambar: #D4A853;
+  --text-dark: #1E1410;
+  --text-light: #F5F2EB;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+@keyframes pulse-down {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.4; }
+}
+.scroll-arrow {
+  animation: pulse-down 1.8s ease-in-out 1s 1;
+}
+
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  display: block;
+}

@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'avifauna' },
+      props: {
+        titleKey: 'projects.1.title',
+        descKey:  'projects.1.desc',
+        tagsKey:  'projects.1.tags',
+        title: 'Avifauna Biodiversidad — Calarcá, Quindío',
+        desc:  'ML aplicado a 53.963 registros abiertos para identificar clusters ecológicos y generar recomendaciones de conservación y aviturismo para stakeholders locales.',
+        tags:  'Machine Learning · Python · Datos Abiertos · Análisis de Stakeholders',
+      }
+    },
+    {
+      params: { slug: 'event-master' },
+      props: {
+        titleKey: 'projects.2.title',
+        descKey:  'projects.2.desc',
+        tagsKey:  'projects.2.tags',
+        title: 'Event Master — Plataforma de Gestión de Eventos',
+        desc:  'Aplicación full-stack en producción que automatiza invitaciones digitales y gestión de RSVPs para agencia de eventos.',
+        tags:  'Full Stack · Next.js · Supabase · UX Design',
+      }
+    },
+    {
+      params: { slug: 'oracle-alumnithon' },
+      props: {
+        titleKey: 'projects.3.title',
+        descKey:  'projects.3.desc',
+        tagsKey:  'projects.3.tags',
+        title: 'Oracle Alumnithon 2025 — 🏆 2.º lugar',
+        desc:  'Identidad visual en Figma + autenticación JWT, perfiles dinámicos y dashboard por roles en React 18 + TypeScript.',
+        tags:  'Frontend · React · TypeScript · Hackathon',
+      }
+    },
+  ];
+}
+
+const { title, desc, tags, titleKey, descKey, tagsKey } = Astro.props;
+---
+
+<Layout>
+  <main style="
+    min-height: 100vh;
+    background: var(--lino);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+    text-align: center;
+  ">
+
+    <a href="/" data-i18n="slug.back" style="
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--violeta);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      display: block;
+      opacity: 0.8;
+    ">← Volver</a>
+
+    <h1 data-i18n={titleKey} style="
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+      line-height: 1.2;
+    ">{title}</h1>
+
+    <p data-i18n={descKey} style="
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dark);
+      opacity: 0.72;
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 1rem;
+    ">{desc}</p>
+
+    <p data-i18n={tagsKey} style="
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.73rem;
+      color: var(--musgo);
+      margin-bottom: 3.5rem;
+      letter-spacing: 0.02em;
+    ">{tags}</p>
+
+    <div style="width: 52px; height: 1px; background: var(--terracota); margin: 0 auto 2rem;"></div>
+
+    <p data-i18n="slug.wip" style="
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      opacity: 0.55;
+    ">Caso de estudio en construcción. Vuelve pronto.</p>
+
+  </main>
+</Layout>

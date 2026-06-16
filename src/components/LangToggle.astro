@@ -1,0 +1,62 @@
+---
+---
+
+<button
+  id="lang-toggle"
+  aria-label="Cambiar idioma / Switch language"
+  style="
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 1000;
+    background: transparent;
+    border: 1px solid var(--musgo);
+    color: var(--musgo);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  "
+>
+  <span id="lbl-es" style="font-weight: 600;">ES</span>
+  <span style="opacity: 0.35;">/</span>
+  <span id="lbl-en" style="font-weight: 400; opacity: 0.45;">EN</span>
+</button>
+
+<script>
+  const btn = document.getElementById('lang-toggle');
+  const lblEs = document.getElementById('lbl-es');
+  const lblEn = document.getElementById('lbl-en');
+
+  function updateToggle(lang) {
+    if (lang === 'es') {
+      lblEs.style.fontWeight = '600'; lblEs.style.opacity = '1';
+      lblEn.style.fontWeight = '400'; lblEn.style.opacity = '0.45';
+    } else {
+      lblEn.style.fontWeight = '600'; lblEn.style.opacity = '1';
+      lblEs.style.fontWeight = '400'; lblEs.style.opacity = '0.45';
+    }
+  }
+
+  updateToggle(localStorage.getItem('lang') || 'es');
+
+  btn.addEventListener('click', () => {
+    const next = (localStorage.getItem('lang') || 'es') === 'es' ? 'en' : 'es';
+    window.setLang(next);
+    updateToggle(next);
+  });
+
+  btn.addEventListener('mouseenter', () => {
+    btn.style.background = 'var(--musgo)';
+    btn.style.color = 'var(--text-light)';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--musgo)';
+  });
+</script>

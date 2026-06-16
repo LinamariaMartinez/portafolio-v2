@@ -1,0 +1,107 @@
+---
+const cards = [
+  {
+    slug: 'avifauna',
+    titleKey: 'projects.1.title',
+    descKey:  'projects.1.desc',
+    tagsKey:  'projects.1.tags',
+    title: 'Avifauna Biodiversidad — Calarcá, Quindío',
+    desc:  'ML aplicado a 53.963 registros abiertos para identificar clusters ecológicos y generar recomendaciones de conservación y aviturismo para stakeholders locales.',
+    tags:  'Machine Learning · Python · Datos Abiertos · Análisis de Stakeholders',
+    featured: true,
+  },
+  {
+    slug: 'event-master',
+    titleKey: 'projects.2.title',
+    descKey:  'projects.2.desc',
+    tagsKey:  'projects.2.tags',
+    title: 'Event Master — Plataforma de Gestión de Eventos',
+    desc:  'Aplicación full-stack en producción que automatiza invitaciones digitales y gestión de RSVPs para agencia de eventos.',
+    tags:  'Full Stack · Next.js · Supabase · UX Design',
+    featured: false,
+  },
+  {
+    slug: 'oracle-alumnithon',
+    titleKey: 'projects.3.title',
+    descKey:  'projects.3.desc',
+    tagsKey:  'projects.3.tags',
+    title: 'Oracle Alumnithon 2025 — 🏆 2.º lugar',
+    desc:  'Identidad visual en Figma + autenticación JWT, perfiles dinámicos y dashboard por roles en React 18 + TypeScript.',
+    tags:  'Frontend · React · TypeScript · Hackathon',
+    featured: false,
+  },
+];
+---
+
+<section style="background: var(--lino); padding: 7rem 2rem;">
+  <div style="max-width: 860px; margin: 0 auto;">
+
+    <span class="section-label reveal" data-i18n="projects.label" style="color: var(--musgo); margin-bottom: 1rem;">Trabajo</span>
+
+    <h2 class="reveal" data-i18n="projects.intro" style="
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--text-dark);
+      margin-bottom: 3.5rem;
+      line-height: 1.2;
+    ">Tres proyectos. Tres preguntas distintas.</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      {cards.map((c, i) => (
+        <article class={`reveal reveal-delay-${i + 1}`} style={`
+          border: 1px solid #E0D8CE;
+          padding: ${c.featured ? '2.5rem' : '2rem'};
+          background: var(--lino);
+          transition: box-shadow 0.25s;
+        `}>
+          <h3
+            data-i18n={c.titleKey}
+            style={`
+              font-family: 'DM Serif Display', serif;
+              font-size: ${c.featured ? '1.5rem' : '1.2rem'};
+              color: var(--text-dark);
+              margin-bottom: 0.75rem;
+              line-height: 1.3;
+            `}
+          >{c.title}</h3>
+          <p
+            data-i18n={c.descKey}
+            style="
+              font-family: 'DM Sans', sans-serif;
+              font-size: 0.93rem;
+              color: var(--text-dark);
+              opacity: 0.75;
+              line-height: 1.75;
+              margin-bottom: 1rem;
+            "
+          >{c.desc}</p>
+          <p
+            data-i18n={c.tagsKey}
+            style="
+              font-family: 'DM Sans', sans-serif;
+              font-size: 0.73rem;
+              color: var(--musgo);
+              letter-spacing: 0.02em;
+              margin-bottom: 1.25rem;
+            "
+          >{c.tags}</p>
+          <a
+            href={`/proyectos/${c.slug}`}
+            class="project-cta"
+            style="
+              font-family: 'DM Sans', sans-serif;
+              font-size: 0.875rem;
+              color: var(--violeta);
+              text-decoration: none;
+            "
+          ><span data-i18n="projects.cta">Ver caso de estudio →</span></a>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .project-cta:hover { text-decoration: underline; }
+</style>
