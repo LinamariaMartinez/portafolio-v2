@@ -3,14 +3,10 @@
 @theme {
   --color-lino: #F5F2EB;
   --color-dark: #1E1410;
-  --color-musgo: #4A7C59;
+  --color-musgo: #7BC47F;
   --color-violeta: #6B3FA0;
   --color-terracota: #C4622D;
-  --color-ambar: #D4A853;
-  --color-moss: #5C9E70;
-  --color-violet: #6B3FA0;
-  --color-terracotta: #C4622D;
-  --color-amber: #D4A853;
+  --color-ambar: #F0C060;
   --font-display: "DM Serif Display", serif;
   --font-body: "DM Sans", sans-serif;
 }
@@ -18,18 +14,13 @@
 :root {
   --lino: #F5F2EB;
   --dark: #1E1410;
-  --musgo: #4A7C59;
+  --musgo: #7BC47F;
   --violeta: #6B3FA0;
   --terracota: #C4622D;
-  --ambar: #D4A853;
+  --ambar: #F0C060;
+  --stat-label: #C8B89A;
   --text-dark: #1E1410;
   --text-light: #F5F2EB;
-  --color-lino: #F5F2EB;
-  --color-dark: #1E1410;
-  --color-moss: #5C9E70;
-  --color-violet: #6B3FA0;
-  --color-terracotta: #C4622D;
-  --color-amber: #D4A853;
 }
 
 *, *::before, *::after {

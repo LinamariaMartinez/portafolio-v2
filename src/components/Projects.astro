@@ -36,11 +36,11 @@ const cards = [
 <section style="background: var(--lino); padding: 7rem 2rem;">
   <div style="max-width: 860px; margin: 0 auto;">
 
-    <span class="section-label reveal" data-i18n="projects.label" style="color: var(--color-moss); margin-bottom: 1rem;">Trabajo</span>
+    <span class="section-label reveal" data-i18n="projects.label" style="color: var(--musgo); margin-bottom: 1rem;">Trabajo</span>
 
     <h2 class="reveal" data-i18n="projects.intro" style="
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-size: clamp(2rem, 4vw, 3.5rem);
       color: var(--text-dark);
       margin-bottom: 3.5rem;
       line-height: 1.2;
@@ -49,24 +49,27 @@ const cards = [
     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
       {cards.map((c, i) => (
         <article class={`project-card reveal reveal-delay-${i + 1}`} style={`padding: ${c.featured ? '2.5rem' : '2rem'};`}>
+          <span class="card-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           <h3
             data-i18n={c.titleKey}
-            style={`
-              font-family: 'DM Serif Display', serif;
-              font-size: ${c.featured ? '1.5rem' : '1.2rem'};
+            style="
+              font-family: 'DM Sans', sans-serif;
+              font-size: 1.25rem;
+              font-weight: 600;
               color: var(--text-dark);
               margin-bottom: 0.75rem;
               line-height: 1.3;
-            `}
+            "
           >{c.title}</h3>
           <p
             data-i18n={c.descKey}
             style="
               font-family: 'DM Sans', sans-serif;
-              font-size: 0.93rem;
+              font-size: 1rem;
+              font-weight: 400;
               color: var(--text-dark);
               opacity: 0.75;
-              line-height: 1.75;
+              line-height: 1.7;
               margin-bottom: 1rem;
             "
           >{c.desc}</p>
@@ -75,7 +78,7 @@ const cards = [
             style="
               font-family: 'DM Sans', sans-serif;
               font-size: 0.73rem;
-              color: var(--color-moss);
+              color: var(--violeta);
               letter-spacing: 0.02em;
               margin-bottom: 1.25rem;
             "
@@ -86,10 +89,10 @@ const cards = [
             style="
               font-family: 'DM Sans', sans-serif;
               font-size: 0.875rem;
-              color: var(--color-moss);
+              color: var(--musgo);
               text-decoration: none;
             "
-          ><span data-i18n="projects.cta">Ver caso de estudio →</span></a>
+          ><span data-i18n="projects.cta">Ver proyecto →</span></a>
         </article>
       ))}
     </div>
@@ -99,14 +102,31 @@ const cards = [
 
 <style>
   .project-card {
+    position: relative;
     border: 1px solid #E0D8CE;
+    border-left: 3px solid var(--musgo);
     background: var(--lino);
     transition: border-color 0.25s, transform 0.25s, opacity 0.7s ease;
+    overflow: hidden;
   }
 
   .project-card:hover {
-    border-color: var(--color-moss);
+    border-color: var(--musgo);
     transform: translateY(-4px);
+  }
+
+  .card-index {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 400;
+    color: var(--dark);
+    opacity: 0.08;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
   }
 
   .project-cta:hover { text-decoration: underline; }
